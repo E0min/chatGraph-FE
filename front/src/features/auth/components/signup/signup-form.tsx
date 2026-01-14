@@ -1,59 +1,29 @@
 "use client";
 
-import { useState } from "react";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
-import { useRouter } from "next/navigation";
-import { signup } from "@/api/user";
-import { toast } from "sonner";
-import { Loader2, CheckCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import { useSignupForm } from "../../hooks/use-signup-form";
 
 export default function SignupForm() {
-  const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordCheck, setPasswordCheck] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [matchError, setMatchError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-
-  const isValidPassword = (pwd: string) => {
-    const regex =
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])[A-Za-z\d!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]{8,16}$/;
-    return regex.test(pwd);
-  };
-
-  const handleSignup = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (passwordError || matchError || !email || !password || !passwordCheck) {
-      return;
-    }
-
-    setIsLoading(true);
-
-    try {
-      const res = await signup({ email, password });
-
-      if (res.status === 201) {
-        toast.success("회원가입이 완료되었습니다", {
-          icon: <CheckCircle className="h-5 w-5 text-green-500" />,
-        });
-        router.push("/login");
-      } else {
-        toast.error("회원가입에 실패했습니다");
-      }
-    } catch (error) {
-      console.error(error);
-      toast.error("회원가입 중 오류가 발생했습니다");
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const {
+    email,
+    setEmail,
+    password,
+    passwordCheck,
+    passwordError,
+    matchError,
+    isLoading,
+    handleSignup,
+    handlePasswordChange,
+    handlePasswordCheckChange,
+    handlePasswordBlur,
+    handlePasswordCheckBlur,
+  } = useSignupForm();
 
   // [Glassmorphism Card Style] - 통일된 카드 디자인
   const glassCardClass = cn(
@@ -144,22 +114,8 @@ export default function SignupForm() {
                 placeholder="비밀번호를 입력해주세요"
                 type="password"
                 value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                  setPasswordError("");
-                  if (passwordCheck && e.target.value !== passwordCheck) {
-                    setMatchError("비밀번호가 일치하지 않습니다.");
-                  } else {
-                    setMatchError("");
-                  }
-                }}
-                onBlur={() => {
-                  if (!isValidPassword(password)) {
-                    setPasswordError(
-                      "비밀번호는 8~16자, 대소문자/숫자/특수문자를 포함해야 합니다."
-                    );
-                  }
-                }}
+                onChange={handlePasswordChange}
+                onBlur={handlePasswordBlur}
                 autoComplete="new-password"
                 className={inputClass}
               />
@@ -186,19 +142,8 @@ export default function SignupForm() {
                 placeholder="비밀번호를 다시 입력해주세요"
                 type="password"
                 value={passwordCheck}
-                onChange={(e) => {
-                  setPasswordCheck(e.target.value);
-                  if (password && e.target.value !== password) {
-                    setMatchError("비밀번호가 일치하지 않습니다.");
-                  } else {
-                    setMatchError("");
-                  }
-                }}
-                onBlur={() => {
-                  if (password && passwordCheck && password !== passwordCheck) {
-                    setMatchError("비밀번호가 일치하지 않습니다.");
-                  }
-                }}
+                onChange={handlePasswordCheckChange}
+                onBlur={handlePasswordCheckBlur}
                 autoComplete="new-password"
                 className={inputClass}
               />
@@ -217,7 +162,7 @@ export default function SignupForm() {
                 "w-full py-6 text-lg font-semibold rounded-xl transition-all duration-200 shadow-lg",
                 "bg-black text-white hover:bg-gray-800 hover:shadow-xl hover:-translate-y-0.5",
                 "dark:bg-white dark:text-black dark:hover:bg-gray-200",
-                (isLoading || !!passwordError || !!matchError || !email || !password || !passwordCheck) && 
+                (isLoading || !!passwordError || !!matchError || !email || !password || !passwordCheck) &&
                 "opacity-50 cursor-not-allowed hover:transform-none hover:shadow-lg"
               )}
               disabled={
@@ -237,8 +182,8 @@ export default function SignupForm() {
               <span className="text-gray-500 dark:text-gray-400 text-sm">
                 이미 계정이 있으신가요?{" "}
               </span>
-              <Link 
-                href="/login" 
+              <Link
+                href="/login"
                 className="text-sm font-semibold text-gray-900 dark:text-white hover:underline transition-all"
               >
                 로그인 하기

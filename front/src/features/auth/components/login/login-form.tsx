@@ -1,53 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { login } from "@/api/user";
-import { toast } from "sonner";
-import { Loader2, CheckCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { useLoginForm } from "../../hooks/use-login-form";
 
 export default function LoginForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-
-  const router = useRouter();
-
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    setIsLoading(true);
-
-    try {
-      const res = await login({ email, password });
-
-      if (res.status === 200) {
-        const accessToken = res.data.token;
-        const refreshToken = res.data.refreshToken;
-        
-        localStorage.setItem("token", accessToken);
-        localStorage.setItem("refreshToken", refreshToken);
-        
-        toast.success("로그인 성공!", {
-          icon: <CheckCircle className="h-5 w-5 text-green-500" />,
-        });
-        router.push("/");
-      } else {
-        toast.error("로그인 실패");
-      }
-    } catch (err) {
-      console.error(err);
-      toast.error("로그인 중 오류가 발생했습니다");
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    isLoading,
+    handleLogin,
+  } = useLoginForm();
 
   // [Glassmorphism Card Style] - StartNewTopicForm과 통일된 스타일
   const glassCardClass = cn(
@@ -83,7 +53,7 @@ export default function LoginForm() {
         {/* 헤더 영역 (로고 + 타이틀) */}
         <div className="flex flex-col items-center space-y-6 text-center">
           <div className="relative w-[100px] h-[100px]">
-             {/* 로고 뒤 광채 효과 */}
+            {/* 로고 뒤 광채 효과 */}
             <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 rounded-full blur-2xl" />
             <Image
               src="/chatlogo.png"
@@ -93,7 +63,7 @@ export default function LoginForm() {
               className="relative drop-shadow-xl"
             />
           </div>
-          
+
           <div className="space-y-2">
             <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
               다시 만나서 반가워요
@@ -131,7 +101,7 @@ export default function LoginForm() {
                 >
                   비밀번호
                 </Label>
-                
+
               </div>
               <Input
                 id="password"
@@ -141,12 +111,12 @@ export default function LoginForm() {
                 onChange={(e) => setPassword(e.target.value)}
                 className={inputClass}
               />
-              <Link 
-                  href="/find" 
-                  className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
-                >
-                  비밀번호를 잊으셨나요?
-                </Link>
+              <Link
+                href="/find"
+                className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+              >
+                비밀번호를 잊으셨나요?
+              </Link>
             </div>
           </div>
 
@@ -163,13 +133,13 @@ export default function LoginForm() {
               {isLoading ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : null}
               로그인
             </Button>
-            
+
             <div className="text-center">
               <span className="text-gray-500 dark:text-gray-400 text-sm">
                 계정이 없으신가요?{" "}
               </span>
-              <Link 
-                href="/register" 
+              <Link
+                href="/register"
                 className="text-sm font-semibold text-gray-900 dark:text-white hover:underline transition-all"
               >
                 회원가입 하기

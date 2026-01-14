@@ -1,0 +1,19 @@
+"use client";
+
+import Link from "next/link";
+import SignupForm from "./signup-form";
+
+export default function SignupPageContent() {
+    return (
+        <div className="flex flex-col min-h-screen bg-white text-gray-900">
+            <header className="w-full p-4 bg-white text-gray-900 flex items-center justify-between border-gray-200">
+                <Link href="/" className="text-2xl font-bold">
+                    Chat-Graph
+                </Link>
+            </header>
+            <main className="flex items-center justify-center">
+                <SignupForm />
+            </main>
+        </div>
+    );
+}

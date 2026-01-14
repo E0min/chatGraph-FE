@@ -92,8 +92,19 @@
 - 복잡한 클래스 문자열은 `cn()` (clsx + tailwind-merge) 유틸리티를 사용하여 가독성을 높입니다.
 - 색상이나 사이즈는 하드코딩하지 않고 `tailwind.config.ts`의 테마 변수를 사용합니다.
 
-### 4.4 Directory Structure & Constants
+### 4.4 Directory Structure (디렉토리 구조)
 
+- **Feature-based Structure**: 기능 단위로 폴더를 구분합니다. (e.g., `features/auth`, `features/chat`)
+- **Parent-Child Components**:
+    - 부모 컴포넌트(페이지 단위 등)는 해당 이름의 폴더를 만들고 `index.tsx`를 진입점으로 사용합니다.
+    - 자식 컴포넌트는 해당 폴더 내부에 위치시킵니다.
+    - **Example**:
+      ```
+      features/auth/components/
+      ├── login/
+      │   ├── index.tsx      # (Entry Point)
+      │   └── login-form.tsx # (Child)
+      ```
 - **Types**: 컴포넌트 내부에서만 쓰이는 타입이 아니면 `src/types` 또는 `src/api/types.ts`로 분리하여 순환 참조를 방지합니다.
 - **Constants**: 매직 넘버나 설정값은 `src/constants` 폴더에서 관리합니다.
 
