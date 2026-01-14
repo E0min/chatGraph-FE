@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from "react";
+﻿import { useState, useEffect, useMemo, useCallback } from "react";
 import {
     ViewData,
     TopicTreeResponse,
@@ -6,7 +6,7 @@ import {
 } from "@/lib/data-transformer";
 import { findPathToNode } from "@/lib/utils";
 import { useTopicStore } from "@/lib/topic-store";
-import { getTopicById } from "@/api/questions";
+import { getTopicById } from "@/features/chat/api/questions";
 
 export const useTreeData = (
     initialResponse: TopicTreeResponse,
@@ -137,3 +137,4 @@ export const useTreeData = (
         refreshViewData,
     };
 };
+

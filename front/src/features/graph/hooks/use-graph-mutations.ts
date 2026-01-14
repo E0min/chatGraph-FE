@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+﻿import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
     askQuestion,
     patchQuestion,
@@ -7,7 +7,7 @@ import {
     deleteQuestionBatch,
     separateQuestions,
     toggleFavoriteQuestion,
-} from "@/api/questions";
+} from "@/features/chat/api/questions";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
@@ -129,3 +129,4 @@ export function useGraphMutations() {
         toggleFavorite: toggleFavoriteMutation
     };
 }
+

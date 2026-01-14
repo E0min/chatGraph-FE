@@ -1,8 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/shared/ui/button";
+import { Textarea } from "@/shared/ui/textarea";
 import {
   Pencil,
   Check,
@@ -15,22 +15,10 @@ import {
   Star,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { GlobalMarkdown } from "@/utils/GlobalMarkDown";
+import { GlobalMarkdown } from "@/shared/utils/GlobalMarkDown";
 import { toast } from "sonner";
-import { OptimisticAnswer } from "@/features/graph/components/breadcrumb-view/optimistic-answer";
-
-interface MessageBubbleProps {
-  questionText: string;
-  answer?: string;
-  isUser?: boolean;
-  isToggleable?: boolean;
-  isAnswerVisible?: boolean;
-  isFavorite?: boolean;
-  onToggleAnswer?: () => void;
-  onEdit?: (newText: string) => void;
-  onDelete?: () => void;
-  onToggleFavorite?: () => void;
-}
+import { OptimisticAnswer } from "@/shared/ui/optimistic-answer";
+import { MessageBubbleProps } from "@/features/chat/types/ui";
 
 export function MessageBubble({
   questionText,

@@ -1,8 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signup } from "@/api/user";
+import { signup } from "@/features/auth/api/user";
 import { toast } from "sonner";
 import { CheckCircle } from "lucide-react";
 
@@ -99,3 +99,5 @@ export function useSignupForm() {
         handlePasswordCheckBlur,
     };
 }
+
+

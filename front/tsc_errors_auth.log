@@ -1,0 +1,37 @@
+src/app/client-layout.tsx(10,50): error TS2307: Cannot find module '@tanstack/react-query' or its corresponding type declarations.
+src/app/client-layout.tsx(11,36): error TS2307: Cannot find module '@tanstack/react-query-devtools' or its corresponding type declarations.
+src/features/chat/hooks/use-topic-data.ts(1,55): error TS2307: Cannot find module '@tanstack/react-query' or its corresponding type declarations.
+src/features/chat/hooks/use-topic-data.ts(58,21): error TS7006: Parameter 'realResponse' implicitly has an 'any' type.
+src/features/chat/hooks/use-topic-data.ts(81,19): error TS7006: Parameter 'error' implicitly has an 'any' type.
+src/features/graph/components/breadcrumb-view/topic-selector-modal.tsx(103,32): error TS7006: Parameter 'topic' implicitly has an 'any' type.
+src/features/graph/hooks/use-graph-mutations.ts(1,45): error TS2307: Cannot find module '@tanstack/react-query' or its corresponding type declarations.
+src/features/graph/hooks/use-graph-mutations.ts(26,19): error TS7006: Parameter 'error' implicitly has an 'any' type.
+src/features/graph/hooks/use-graph-mutations.ts(45,19): error TS7006: Parameter 'error' implicitly has an 'any' type.
+src/features/graph/hooks/use-graph-mutations.ts(58,19): error TS7006: Parameter 'error' implicitly has an 'any' type.
+src/features/graph/hooks/use-graph-mutations.ts(82,19): error TS7006: Parameter 'error' implicitly has an 'any' type.
+src/features/graph/hooks/use-graph-mutations.ts(97,21): error TS7006: Parameter 'newTopicId' implicitly has an 'any' type.
+src/features/graph/hooks/use-graph-mutations.ts(103,19): error TS7006: Parameter 'error' implicitly has an 'any' type.
+src/features/graph/hooks/use-graph-mutations.ts(117,19): error TS7006: Parameter 'error' implicitly has an 'any' type.
+src/features/graph/hooks/use-topic-selector.ts(2,26): error TS2307: Cannot find module '@tanstack/react-query' or its corresponding type declarations.
+src/features/sidebar/app-sidebar.tsx(93,41): error TS7006: Parameter 'topic' implicitly has an 'any' type.
+src/features/sidebar/app-sidebar.tsx(94,44): error TS7006: Parameter 'topic' implicitly has an 'any' type.
+src/features/sidebar/hooks/use-sidebar-data.ts(1,55): error TS2307: Cannot find module '@tanstack/react-query' or its corresponding type declarations.
+src/features/sidebar/hooks/use-sidebar-data.ts(38,28): error TS7031: Binding element 'topicId' implicitly has an 'any' type.
+src/features/sidebar/hooks/use-sidebar-data.ts(38,37): error TS7031: Binding element 'newName' implicitly has an 'any' type.
+src/features/sidebar/hooks/use-sidebar-data.ts(44,75): error TS7006: Parameter 'old' implicitly has an 'any' type.
+src/features/sidebar/hooks/use-sidebar-data.ts(45,31): error TS7006: Parameter 't' implicitly has an 'any' type.
+src/features/sidebar/hooks/use-sidebar-data.ts(50,19): error TS7006: Parameter 'err' implicitly has an 'any' type.
+src/features/sidebar/hooks/use-sidebar-data.ts(50,24): error TS7006: Parameter 'newTodo' implicitly has an 'any' type.
+src/features/sidebar/hooks/use-sidebar-data.ts(50,33): error TS7006: Parameter 'context' implicitly has an 'any' type.
+src/features/sidebar/hooks/use-sidebar-data.ts(66,26): error TS7006: Parameter 'topicId' implicitly has an 'any' type.
+src/features/sidebar/hooks/use-sidebar-data.ts(71,75): error TS7006: Parameter 'old' implicitly has an 'any' type.
+src/features/sidebar/hooks/use-sidebar-data.ts(72,34): error TS7006: Parameter 't' implicitly has an 'any' type.
+src/features/sidebar/hooks/use-sidebar-data.ts(77,19): error TS7006: Parameter 'err' implicitly has an 'any' type.
+src/features/sidebar/hooks/use-sidebar-data.ts(77,24): error TS7006: Parameter 'topicId' implicitly has an 'any' type.
+src/features/sidebar/hooks/use-sidebar-data.ts(77,33): error TS7006: Parameter 'context' implicitly has an 'any' type.
+src/features/sidebar/hooks/use-sidebar-data.ts(92,26): error TS7006: Parameter 'topicId' implicitly has an 'any' type.
+src/features/sidebar/hooks/use-sidebar-data.ts(97,75): error TS7006: Parameter 'old' implicitly has an 'any' type.
+src/features/sidebar/hooks/use-sidebar-data.ts(98,31): error TS7006: Parameter 't' implicitly has an 'any' type.
+src/features/sidebar/hooks/use-sidebar-data.ts(103,19): error TS7006: Parameter 'err' implicitly has an 'any' type.
+src/features/sidebar/hooks/use-sidebar-data.ts(103,24): error TS7006: Parameter 'topicId' implicitly has an 'any' type.
+src/features/sidebar/hooks/use-sidebar-data.ts(103,33): error TS7006: Parameter 'context' implicitly has an 'any' type.

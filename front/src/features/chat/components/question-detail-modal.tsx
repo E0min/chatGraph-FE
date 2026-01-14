@@ -1,28 +1,21 @@
-// components/enhanced-breadcrumb-focus-view/QuestionDetailModal.tsx
-
+﻿
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { ViewData } from "@/lib/data-transformer";
-import { QuestionCard } from "@/features/graph/components/breadcrumb-view/question-card";
-
-interface QuestionDetailModalProps {
-  question: ViewData | null;
-  onClose: () => void;
-  onJumpToChat: () => void;
-}
+} from "@/shared/ui/dialog";
+import { Button } from "@/shared/ui/button";
+import { QuestionDetailModalProps } from "@/features/chat/types/ui";
 
 export default function QuestionDetailModal({
-  question,
+  isOpen,
   onClose,
   onJumpToChat,
+  children,
 }: QuestionDetailModalProps) {
   return (
-    <Dialog open={!!question} onOpenChange={onClose}>
+    <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="w-full sm:max-w-4xl p-0 bg-transparent border-none shadow-none overflow-hidden">
         {/* 모달의 기본 스타일을 제거하고 내부 컨테이너에서 스타일을 재정의합니다.
           이렇게 하면 카드 주변의 여백이나 배경색 문제를 해결하기 쉽습니다.
@@ -36,13 +29,7 @@ export default function QuestionDetailModal({
             p-6 클래스로 카드 주변에 여백을 줍니다.
           */}
           <div className="flex-1 overflow-y-auto p-6 pt-2">
-            {question && (
-              <QuestionCard
-                question={question}
-                isModalMode={true} // 모달 모드 활성화 (클릭 네비게이션 방지)
-                defaultAnswerExpanded={true} // 상세 모달이니 답변은 기본적으로 펼쳐둡니다 (사용자가 접을 수 있음)
-              />
-            )}
+            {children}
           </div>
 
           {/* 하단 버튼 영역 */}

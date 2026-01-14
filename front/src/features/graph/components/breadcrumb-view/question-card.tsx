@@ -1,16 +1,16 @@
-// components/enhanced-breadcrumb-focus-view/QuestionCard.tsx
+﻿// components/enhanced-breadcrumb-focus-view/QuestionCard.tsx
 
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/shared/ui/card";
+import { Badge } from "@/shared/ui/badge";
 import { ChevronDown, ChevronUp, MoreHorizontal } from "lucide-react";
 import { ViewData } from "@/lib/data-transformer";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/shared/ui/button";
 import { cn } from "@/lib/utils";
-import { GlobalMarkdown } from "@/utils/GlobalMarkDown";
-import { OptimisticAnswer } from "./optimistic-answer";
+import { GlobalMarkdown } from "@/shared/utils/GlobalMarkDown";
+import { OptimisticAnswer } from "@/shared/ui/optimistic-answer";
 
 // 스타일 정의
 const glassmorphismClasses =
@@ -18,12 +18,7 @@ const glassmorphismClasses =
 const userBubbleClasses =
   "p-4 rounded-2xl bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 mb-2";
 
-interface QuestionCardProps {
-  question: ViewData;
-  addToPath?: (question: ViewData) => void;
-  isModalMode?: boolean; // 모달 모드 여부 (네비게이션 방지용)
-  defaultAnswerExpanded?: boolean;
-}
+import { QuestionCardProps } from "@/features/graph/types/ui";
 
 // 개별 질문 카드 컴포넌트
 export const QuestionCard = ({

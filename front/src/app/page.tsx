@@ -1,5 +1,5 @@
-import { StartNewTopicForm } from "@/features/chat/components/start-new-topic-form";
+import HomeView from "@/views/home/home-view";
 
 export default function HomePage() {
-  return <StartNewTopicForm />
+  return <HomeView />
 }

@@ -1,11 +1,11 @@
-"use client";
+﻿"use client";
 
-import { SidebarProvider, useSidebar } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/layouts/sidebar/app-sidebar";
+import { SidebarProvider, useSidebar } from "@/shared/ui/sidebar";
+import { AppSidebar } from "@/features/sidebar/app-sidebar";
 import { usePathname } from "next/navigation";
 import { Toaster } from "sonner";
 import type { ReactNode } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/shared/ui/button";
 import { Menu } from "lucide-react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -64,3 +64,5 @@ export default function ClientLayout({ children }: { children: ReactNode }) {
     </QueryClientProvider>
   );
 }
+
+

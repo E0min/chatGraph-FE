@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+﻿import { Button } from "@/shared/ui/button";
+import { Badge } from "@/shared/ui/badge";
 import {
   Network,
   List,
@@ -17,16 +17,13 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { SimpleTooltip } from "@/components/ui/simple-tooltip";
+} from "@/shared/ui/dropdown-menu";
+import { SimpleTooltip } from "@/shared/ui/simple-tooltip";
 import { BreadcrumbNavigation } from "./breadcrumb-navigation";
 import { ViewData } from "@/lib/data-transformer";
 import { cn } from "@/lib/utils";
 
-interface FocusViewHeaderProps {
-  currentPath: ViewData[];
-  navigateToQuestion: (question: ViewData, index: number) => void;
-}
+import { FocusViewHeaderProps } from "@/features/graph/types/ui";
 
 export const FocusViewHeader = ({
   currentPath,
@@ -208,3 +205,4 @@ export const FocusViewHeader = ({
     </div>
   );
 };
+

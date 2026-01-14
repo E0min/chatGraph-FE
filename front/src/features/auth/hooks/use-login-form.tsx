@@ -1,8 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { login } from "@/api/user";
+import { login } from "@/features/auth/api/user";
 import { toast } from "sonner";
 import { CheckCircle } from "lucide-react";
 
@@ -52,3 +52,5 @@ export function useLoginForm() {
         handleLogin,
     };
 }
+
+

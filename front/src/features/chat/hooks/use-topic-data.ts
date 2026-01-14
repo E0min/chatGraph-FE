@@ -1,7 +1,7 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+﻿import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { getTopicById, askQuestion, TopicTreeResponse, TopicNode } from "@/api/questions";
+import { getTopicById, askQuestion, TopicTreeResponse, TopicNode } from "@/features/chat/api/questions";
 import { useTopicStore } from "@/lib/topic-store";
 import { toast } from "sonner";
 
@@ -140,3 +140,4 @@ export function useTopicData({ topicId, isOptimistic }: UseTopicDataProps) {
 
     return { data, isLoading, error };
 }
+

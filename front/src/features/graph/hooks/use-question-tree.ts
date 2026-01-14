@@ -1,7 +1,7 @@
-import { useCallback, useMemo } from "react";
+﻿import { useCallback, useMemo } from "react";
 import { toast } from "sonner";
 
-import { ShareQuestions } from "@/api/questions";
+import { ShareQuestions } from "@/features/chat/api/questions";
 import { ViewData, TopicTreeResponse } from "@/lib/data-transformer";
 import { findPathToNode } from "@/lib/utils";
 import { useGraphMutations } from "@/features/graph/hooks/use-graph-mutations";
@@ -353,3 +353,4 @@ export const useQuestionTree = (
     ]
   );
 };
+

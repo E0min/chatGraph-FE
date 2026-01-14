@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect } from "react";
 import {
@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogDescription,
-} from "@/components/ui/dialog";
+} from "@/shared/ui/dialog";
 import {
   Command,
   CommandEmpty,
@@ -15,8 +15,8 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command";
-import { ScrollArea } from "@/components/ui/scroll-area";
+} from "@/shared/ui/command";
+import { ScrollArea } from "@/shared/ui/scroll-area";
 import { InteractiveD3Graph } from "../interactive-d3-graph"; // D3 그래프 재사용
 // 토픽 목록 API 경로
 // 토픽 목록 API 경로 제거 (Hooks에서 사용)
@@ -24,22 +24,7 @@ import { ViewData } from "@/lib/data-transformer";
 import { useQuestionTreeContext } from "./question-tree-context";
 import { useTopicSelector } from "@/features/graph/hooks/use-topic-selector"; // Import the custom hook
 
-// API 응답 타입
-interface TopicHistoryItem {
-  topicId: string;
-  topicName: string;
-  createdAt: string;
-}
-
-interface TopicSelectorModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  currentNodeToMove: ViewData | null;
-  onNodeSelected: (
-    targetTopic: TopicHistoryItem,
-    targetParentNode: { id: string; name: string }
-  ) => void;
-}
+import { TopicSelectorModalProps } from "@/features/graph/types/ui";
 
 export function TopicSelectorModal({
   isOpen,
@@ -131,3 +116,4 @@ export function TopicSelectorModal({
     </Dialog>
   );
 }
+

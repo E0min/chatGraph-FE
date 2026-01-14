@@ -1,4 +1,4 @@
-import SignupPageContent from "@/features/auth/components/signup";
+import RegisterView from "@/views/register/register-view";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 
 // 회원가입 페이지
 export default function RegisterPage() {
-  return <SignupPageContent />;
+  return <RegisterView />;
 }

@@ -1,4 +1,4 @@
-import LoginPageContent from "@/features/auth/components/login";
+import LoginView from "@/views/login/login-view";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 
 // 로그인 페이지
 export default function LoginPage() {
-  return <LoginPageContent />;
+  return <LoginView />;
 }

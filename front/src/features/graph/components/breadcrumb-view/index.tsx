@@ -1,8 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
-import { Separator } from "@/components/ui/separator";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { Separator } from "@/shared/ui/separator";
+import { ScrollArea } from "@/shared/ui/scroll-area";
 import { MessageBubble } from "@/features/chat/components/message-bubble";
 import { InteractiveD3Graph } from "../interactive-d3-graph";
 import { TopicTreeResponse } from "@/lib/data-transformer";
@@ -15,7 +15,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+} from "@/shared/ui/alert-dialog";
 import {
   QuestionTreeProvider,
   useQuestionTreeContext,
@@ -23,16 +23,14 @@ import {
 import { FocusViewHeader } from "./focus-view-header";
 import { SubQuestionList } from "./sub-question-list";
 import { NewQuestionForm } from "./new-question-form";
+import { QuestionCard } from "./question-card";
 import QuestionDetailModal from "@/features/chat/components/question-detail-modal";
 import { findPathToNode, cn } from "@/lib/utils";
 import { AlertDialog } from "@radix-ui/react-alert-dialog";
-import { useSidebar } from "@/components/ui/sidebar";
+import { useSidebar } from "@/shared/ui/sidebar";
 import { ShareEmailModal } from "@/features/share/components/share-email-modal";
 
-interface EnhancedBreadcrumbFocusViewProps {
-  initialResponse: TopicTreeResponse;
-  initialQuestionId?: string | null;
-}
+import { EnhancedBreadcrumbFocusViewProps } from "@/features/graph/types/ui";
 
 export function EnhancedBreadcrumbFocusView({
   initialResponse,
@@ -125,14 +123,22 @@ function EnhancedBreadcrumbFocusViewContent({ }: EnhancedBreadcrumbFocusViewProp
             onNodeClick={handleGraphNodeClick}
           />
           <QuestionDetailModal
-            question={selectedNode}
+            isOpen={!!selectedNode}
             onClose={() => setSelectedNode(null)}
             onJumpToChat={() => {
               setFocusedNodeId(selectedNode?.id || null);
               setSelectedNode(null);
               setViewMode("chat");
             }}
-          />
+          >
+            {selectedNode && (
+              <QuestionCard
+                question={selectedNode}
+                isModalMode={true}
+                defaultAnswerExpanded={true}
+              />
+            )}
+          </QuestionDetailModal>
           <ShareEmailModal
             isOpen={!!shareRequest}
             onClose={() => setShareRequest(null)}
@@ -333,3 +339,4 @@ function EnhancedBreadcrumbFocusViewContent({ }: EnhancedBreadcrumbFocusViewProp
     </div>
   );
 }
+

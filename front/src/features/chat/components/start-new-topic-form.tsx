@@ -1,51 +1,26 @@
-"use client";
+﻿"use client";
 
-import { useEffect, useState, useRef } from "react";
-import { useRouter } from "next/navigation";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
+import { Textarea } from "@/shared/ui/textarea";
+import { Button } from "@/shared/ui/button";
 import { ArrowUp } from "lucide-react";
 import Image from "next/image";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils"; // cn 유틸리티 import 가정
+} from "@/shared/ui/tooltip";
+import { cn } from "@/lib/utils";
+import { useStartNewTopic } from "@/features/chat/hooks/use-start-new-topic";
 
 export function StartNewTopicForm() {
-  const [prompt, setPrompt] = useState("");
-  const [isLogin, setIsLogin] = useState(false);
-  const [hasMounted, setHasMounted] = useState(false);
-
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const router = useRouter();
-
-  useEffect(() => {
-    setHasMounted(true);
-    const token = localStorage.getItem("token");
-    if (token) {
-      setIsLogin(true);
-    }
-  }, []);
-
-  useEffect(() => {
-    const textarea = textareaRef.current;
-    if (textarea) {
-      textarea.style.height = "auto";
-      textarea.style.height = `${textarea.scrollHeight}px`;
-    }
-  }, [prompt]);
-
-  const handleStartNewTopic = async () => {
-    if (!prompt.trim()) return;
-
-    const tempId = `temp-${Date.now()}`;
-    const timestamp = new Date().toISOString();
-    sessionStorage.setItem(tempId, JSON.stringify({ prompt, timestamp }));
-
-    router.push(`/${tempId}?optimistic=true`);
-  };
+  const {
+    prompt,
+    setPrompt,
+    isLogin,
+    hasMounted,
+    textareaRef,
+    handleStartNewTopic,
+  } = useStartNewTopic();
 
   // [Glassmorphism Container Style - FocusViewHeader/NewQuestionForm과 통일]
   const glassContainerClass = cn(
@@ -169,3 +144,4 @@ export function StartNewTopicForm() {
     </div>
   );
 }
+

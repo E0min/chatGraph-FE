@@ -1,7 +1,7 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { getTopicsHistory, TopicHistoryItem } from "@/api/topics-history";
-import { getTopicById } from "@/api/questions";
+import { getTopicsHistory, TopicHistoryItem } from "@/features/chat/api/topics-history";
+import { getTopicById } from "@/features/chat/api/questions";
 import { transformApiDataToViewData } from "@/lib/data-transformer";
 
 export function useTopicSelector(isOpen: boolean) {
@@ -53,3 +53,4 @@ export function useTopicSelector(isOpen: boolean) {
         setStep
     };
 }
+

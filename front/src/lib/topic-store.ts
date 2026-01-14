@@ -1,7 +1,7 @@
-import { create } from "zustand";
-import { TopicTreeResponse } from "@/api/questions";
-import { getTopicsHistory, TopicHistoryItem } from "@/api/topics-history";
-import { toggleFavoriteTopic } from "@/api/topics";
+﻿import { create } from "zustand";
+import { TopicTreeResponse } from "@/features/chat/api/questions";
+import { getTopicsHistory, TopicHistoryItem } from "@/features/chat/api/topics-history";
+import { toggleFavoriteTopic } from "@/features/chat/api/topics";
 
 interface TopicState {
   currentTopicId: string | null;
