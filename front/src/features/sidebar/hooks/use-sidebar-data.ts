@@ -1,13 +1,11 @@
-﻿import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { getTopicsHistory, TopicHistoryItem } from "@/features/chat/api/topics-history";
-import { searchQuestions, QuestionNode } from "@/features/chat/api/questions";
-import { patchTopic, deleteTopic, toggleFavoriteTopic } from "@/features/chat/api/topics";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { getTopicsHistory, TopicHistoryItem } from "@/features/topic/api/topics-history";
+import { searchQuestions } from "@/features/topic/api/questions";
+import { patchTopic, deleteTopic, toggleFavoriteTopic } from "@/features/topic/api/topics";
 import { toast } from "sonner";
 
 // 검색 결과 노드 인터페이스 (토픽 ID 포함)
-export interface SearchResultNode extends QuestionNode {
-    topicId: string;
-}
+import { SearchResultNode } from "@/features/sidebar/types/ui";
 
 export function useSidebarData(isLoggedIn: boolean) {
     const queryClient = useQueryClient();

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import SignupForm from "@/features/auth/components/signup-form";
+import SignupForm from "@/features/auth/components/signup";
 
 export default function RegisterView() {
     return (

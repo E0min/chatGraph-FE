@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -31,18 +31,19 @@ import { ScrollArea } from "@/shared/ui/scroll-area";
 import { Separator } from "@/shared/ui/separator";
 
 // API 및 유틸리티 임포트
-import { TopicHistoryItem } from "@/features/chat/api/topics-history";
-import { cn } from "@/lib/utils";
+import { TopicHistoryItem } from "@/features/topic/api/topics-history";
+import { cn } from "@/shared/lib/utils";
 import { SIDEBAR_CONFIG } from "@/constants/ui-constants";
 
 // Hook 임포트 (Rule 1.3 해결)
-import { useSidebarData, SearchResultNode } from "./hooks/use-sidebar-data";
+import { useSidebarData } from "./hooks/use-sidebar-data";
+import { SearchResultNode } from "@/features/sidebar/types/ui";
 
 // 하위 컴포넌트 임포트
-import { TopicList } from "./app-sidebar-components/topic-list";
-import { UserFooter } from "./app-sidebar-components/user-footer";
-import { SidebarSearchInput } from "./app-sidebar-components/sidebar-search-input";
-import { SearchResultsList } from "./app-sidebar-components/search-results-list";
+import { TopicList } from "./components/history/topic-list";
+import { UserFooter } from "./components/footer/user-footer";
+import { SidebarSearchInput } from "./components/search/sidebar-search-input";
+import { SearchResultsList } from "./components/search/search-results-list";
 
 // 사이드바 로딩 시 표시할 스켈레톤 UI 컴포넌트
 const SidebarSkeleton = () => (

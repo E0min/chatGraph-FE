@@ -2,9 +2,9 @@
 
 import { Suspense } from "react";
 import { useParams, useSearchParams } from "next/navigation";
-import { EnhancedBreadcrumbFocusView } from "@/features/graph/components/breadcrumb-view";
+import { EnhancedBreadcrumbFocusView } from "@/features/topic/components/conversation";
 import LoadingSpinner from "@/shared/ui/loading-spinner";
-import { useTopicData } from "@/features/chat/hooks/use-topic-data";
+import { useTopicData } from "@/features/topic/hooks/conversation/use-topic-data";
 
 function ChatPageContentInner() {
   const params = useParams();

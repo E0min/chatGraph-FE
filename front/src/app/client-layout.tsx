@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { SidebarProvider, useSidebar } from "@/shared/ui/sidebar";
 import { AppSidebar } from "@/features/sidebar/app-sidebar";

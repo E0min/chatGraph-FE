@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import LoginForm from "@/features/auth/components/login-form";
+import LoginForm from "@/features/auth/components/login";
 
 export default function LoginView() {
     return (
