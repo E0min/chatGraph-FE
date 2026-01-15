@@ -25,3 +25,4 @@
 - 작업 완료 후 필요 시 `git_rules.md` 내의 PR request 양식에 맞춰 작업 내용을 요약 보고한다.
 - A이슈 내의 태스크 하나를 끝낼 때마다 스스로 여러 `ruleset`을 준수했는지 검토한다.
 - **1 Task = 1 커밋**: `git_rules.md`에 맞춰 아주 작은 단위로 커밋을 한다.
+- **Refactoring Log Update**: 중요한 리팩토링이나 문제 해결 과정(사고 과정, 의사결정)이 발생하면 반드시 `flow/refactoring_log.md` 파일에 해당 내용을 기록하여 히스토리를 남긴다.

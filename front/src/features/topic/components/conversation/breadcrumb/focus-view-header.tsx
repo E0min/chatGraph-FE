@@ -11,7 +11,7 @@ import {
   Move,
   Share,
 } from "lucide-react";
-import { useQuestionTreeContext } from "@/features/topic/components/conversation/question-tree-context";
+import { useQuestionTreeContext } from "@/features/topic/hooks/conversation/breadcrumb/use-question-tree-context";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,7 +19,7 @@ import {
   DropdownMenuTrigger,
 } from "@/shared/ui/dropdown-menu";
 import { SimpleTooltip } from "@/shared/ui/simple-tooltip";
-import { BreadcrumbNavigation } from "./breadcrumb-navigation";
+import { BreadcrumbNavigation } from "@/features/topic/components/conversation/breadcrumb/breadcrumb-navigation";
 import { cn } from "@/shared/lib/utils";
 
 import { FocusViewHeaderProps } from "@/features/topic/types/ui";

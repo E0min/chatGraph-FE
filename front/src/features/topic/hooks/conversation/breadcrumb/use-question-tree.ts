@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { ShareQuestions } from "@/features/topic/api/questions";
 import { ViewData, TopicTreeResponse } from "@/shared/lib/data-transformer";
 import { findPathToNode } from "@/shared/lib/utils";
-import { useGraphMutations } from "@/features/topic/hooks/conversation/use-graph-mutations";
+import { useGraphMutations } from "./use-graph-mutations";
 import { useTreeData } from "./use-tree-data";
 import { useTreeInteraction } from "./use-tree-interaction";
 

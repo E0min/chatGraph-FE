@@ -1,5 +1,3 @@
-// components/enhanced-breadcrumb-focus-view/QuestionCard.tsx
-
 "use client";
 
 import { useState, useEffect, useRef } from "react";
@@ -10,14 +8,13 @@ import { Button } from "@/shared/ui/button";
 import { cn } from "@/shared/lib/utils";
 import { GlobalMarkdown } from "@/shared/utils/GlobalMarkDown";
 import { OptimisticAnswer } from "@/shared/ui/optimistic-answer";
+import { QuestionCardProps } from "@/features/topic/types/ui";
 
 // 스타일 정의
 const glassmorphismClasses =
   "p-4 bg-white/60 dark:bg-black/60 backdrop-blur-2xl rounded-2xl border border-white/40 dark:border-white/10";
 const userBubbleClasses =
   "p-4 rounded-2xl bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 mb-2";
-
-import { QuestionCardProps } from "@/features/topic/types/ui";
 
 // 개별 질문 카드 컴포넌트
 export const QuestionCard = ({

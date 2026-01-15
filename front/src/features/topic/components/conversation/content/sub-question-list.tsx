@@ -2,7 +2,6 @@
 
 import { MessageSquare } from "lucide-react";
 import { ViewData } from "@/shared/lib/data-transformer";
-
 import { QuestionCard } from "./question-card"; // 분리한 컴포넌트 import
 
 interface SubQuestionListProps {

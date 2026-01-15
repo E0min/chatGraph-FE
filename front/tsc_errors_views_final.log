@@ -1,2 +1,0 @@
-src/features/auth/components/login-form.tsx(10,30): error TS2307: Cannot find module '../../hooks/use-login-form' or its corresponding type declarations.
-src/features/auth/components/signup-form.tsx(10,31): error TS2307: Cannot find module '../../hooks/use-signup-form' or its corresponding type declarations.

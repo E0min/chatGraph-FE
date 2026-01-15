@@ -21,7 +21,7 @@ import { InteractiveD3Graph } from "@/features/topic/components/visualizer"; // 
 // 토픽 목록 API 경로
 // 토픽 목록 API 경로 제거 (Hooks에서 사용)
 import { ViewData } from "@/shared/lib/data-transformer";
-import { useQuestionTreeContext } from "@/features/topic/components/conversation/question-tree-context";
+import { useQuestionTreeContext } from "@/features/topic/hooks/conversation/breadcrumb/use-question-tree-context";
 import { useTopicSelector } from "@/features/topic/hooks/conversation/modals/use-topic-selector"; // Import the custom hook
 
 import { TopicSelectorModalProps } from "@/features/topic/types/ui";

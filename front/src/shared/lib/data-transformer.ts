@@ -1,4 +1,4 @@
-// EnhancedBreadcrumbFocusView가 요구하는 데이터 타입
+// BreadcrumbFocusView가 요구하는 데이터 타입
 export interface ViewData {
   id: string;
   questionText: string;
@@ -32,7 +32,7 @@ export interface TopicTreeResponse {
 }
 
 /**
- * API 응답 (TopicTreeResponse)을 EnhancedBreadcrumbFocusView가 사용하는
+ * API 응답 (TopicTreeResponse)을 BreadcrumbFocusView가 사용하는
  * 재귀적인 ViewData 형태로 변환하는 함수.
  */
 export const transformApiDataToViewData = (

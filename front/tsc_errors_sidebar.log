@@ -1,5 +1,0 @@
-src/features/auth/components/login/index.tsx(10,30): error TS2307: Cannot find module '@/features/auth/hooks/use-login-form' or its corresponding type declarations.
-src/features/auth/components/signup/index.tsx(10,31): error TS2307: Cannot find module '@/features/auth/hooks/use-signup-form' or its corresponding type declarations.
-src/features/sidebar/app-sidebar.tsx(39,26): error TS2459: Module '"./hooks/use-sidebar-data"' declares 'SearchResultNode' locally, but it is not exported.
-src/views/login/login-view.tsx(4,23): error TS2307: Cannot find module '@/features/auth/components/login-form' or its corresponding type declarations.
-src/views/register/register-view.tsx(4,24): error TS2307: Cannot find module '@/features/auth/components/signup-form' or its corresponding type declarations.

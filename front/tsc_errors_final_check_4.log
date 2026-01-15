@@ -1,2 +1,0 @@
-src/features/graph/components/conversation/topic-selector-modal.tsx(20,36): error TS2307: Cannot find module '../interactive-d3-graph' or its corresponding type declarations.
-src/features/graph/components/visualizer/index.tsx(6,40): error TS2307: Cannot find module './breadcrumb-view/question-tree-context' or its corresponding type declarations.

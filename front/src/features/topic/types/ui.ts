@@ -8,7 +8,7 @@ export interface QuestionCardProps {
     defaultAnswerExpanded?: boolean;
 }
 
-export interface EnhancedBreadcrumbFocusViewProps {
+export interface BreadcrumbFocusViewProps {
     initialResponse: TopicTreeResponse;
     initialQuestionId?: string | null;
 }
