@@ -31,6 +31,7 @@ src/
 src/features/topic/  (예시)
 ├── api/             # 서버 통신 로직 (API calls)
 ├── components/      # 해당 기능 전용 UI 컴포넌트
+├── contexts/        # 해당 기능 전용 Context & Provider (상태 공유)
 ├── hooks/           # 해당 기능 전용 커스텀 훅
 └── types/           # 해당 기능 전용 타입 정의 (UI, API types)
 ```

@@ -131,5 +131,86 @@ Breadcrumb 기능과 관련된 컴포넌트와 훅들이 `conversation` 폴더 �
 - 리팩토링된 모든 파일에서 `../` 패턴을 제거하고 `@/features/...` 형태로 수정했습니다.
 - 단, 같은 디렉토리 내의 파일(` ./ `)은 가독성을 위해 허용했습니다.
 
+---
 
+## 10. Context Directory 도입
 
+### ❓ 문제점
+`hooks` 폴더에 `use-question-tree-context.ts`가 위치해 있어, 단순 훅인지 Context 정의인지 구분이 모호했습니다.
+일반적으로 React 프로젝트에서 Context 관련 로직은 `contexts` 폴더에서 별도로 관리하는 것이 관례입니다.
+
+### 💡 해결 방안
+**`contexts` 디렉토리를 신설**하여 역할을 명확히 했습니다.
+- **`features/topic/contexts/` 생성**: Context 정의 및 Provider(혹은 하이브리드 파일)를 보관할 장소를 마련했습니다.
+- **파일 이동 및 이름 변경**: `hooks/.../use-question-tree-context.ts` -> `contexts/.../question-tree-context.ts`로 이동 및 변경하여 "Context 정의 파일"임을 명시했습니다.
+- **규칙 업데이트**: `rulesets/frontend_directory.md`에 `contexts` 폴더에 대한 설명을 추가하여 아키텍처 규칙에 반영했습니다.
+
+---
+
+## 11. Cohesion(응집도) 개선: State Lifting
+
+### ❓ 문제점
+`BreadcrumbFocusView`가 View 역할뿐만 아니라 데이터 초기화(`useQuestionTree`) 및 Provider 제공 역할까지 수행하고 있어 결합도가 높고(Coupling) 재사용이 어려웠습니다.
+
+### 💡 해결 방안
+**State Lifting(상태 끌어올리기)**을 통해 역할을 재분배했습니다.
+- **`TopicPageContent`**: 데이터 페칭 + 상태 초기화(`useQuestionTree`) + `Context.Provider` 제공. (Container 역할 강화)
+- **`BreadcrumbFocusView`**: 단순히 Context를 소비하여 View를 전환하는 역할로 축소. (Pure View 역할)
+- 결과적으로 `TopicPageContent`는 데이터/상태 관리에 집중하고(High Cohesion), `BreadcrumbFocusView`는 의존성이 줄어들어(Loose Coupling) 구조가 개선되었습니다.
+
+---
+
+## 12. View Composition Pattern 적용
+
+### ❓ 문제점
+`BreadcrumbFocusView`는 이름과 달리 "화면 전환(Composition)" 로직을 포함하고 있어, View Layer(`ChatView`)가 해야 할 역할을 대신하고 있었습니다.
+또한 `TopicPageContent`는 단순 위임자(Delegator) 역할에 불과했습니다.
+
+### 💡 해결 방안
+**View Layer에서 화면 구성을 주도**하도록 변경했습니다.
+- **`ChatView.tsx` 통합**: `TopicPageContent`와 `BreadcrumbFocusView`의 로직(데이터 페칭, 상태 초기화, 화면 전환)을 `ChatView`로 모두 가져왔습니다.
+- **불필요한 파일 삭제**: 역할이 사라진 `TopicPageContent.tsx`와 `BreadcrumbFocusView.tsx`를 과감히 삭제했습니다.
+- **결과**:
+  - `features/`: 순수한 비즈니스 로직과 UI 컴포넌트 제공.
+  - `views/`: 이들을 조립하여 최종 페이지를 완성하는 주체.
+  - 역할 분리가 명확해지고 파일 갯수가 줄어들어 구조가 단순해졌습니다.
+
+---
+
+## 13. Component Consolidation (ChatView 통합)
+
+### ❓ 문제점
+`ChatView.tsx` 내부에서 `Suspense`를 처리하기 위해 `TopicContent`, `ChatViewContent`, `ChatView`로 3단 분리가 되어 있었습니다.
+이는 불필요한 복잡도를 유발하고 가독성을 저하시켰습니다.
+
+### 💡 해결 방안
+**Suspense Boundary를 상위 페이지(`page.tsx`)로 이동**시키고, `ChatView`를 단일 컴포넌트로 합쳤습니다.
+- **`app/[id]/page.tsx`**: `Suspense` 적용 담당.
+- **`ChatView.tsx`**: 데이터 페칭 및 렌더링만 담당하는 단일 컴포넌트로 통합.
+- 이를 통해 `ChatView` 코드가 매우 직관적이고 깔끔해졌습니다.
+
+---
+
+## 14. Absolute Path Fix (Import 경로 정리)
+
+### ❓ 문제점
+`front/src/features/topic/components/conversation/content` 내부 파일들(`topic-chat-view.tsx`, `sub-question-list.tsx` 등)이 여전히 상대 경로(`../`, `./`)를 사용하고 있어, 파일 이동 시 경로가 깨질 위험이 있었습니다.
+
+### 💡 해결 방안
+해당 디렉토리 내의 모든 컴포넌트 import를 **절대 경로(`@/...`)**로 수정했습니다.
+- `sub-question-list.tsx`: `import { QuestionCard } from "@/features/..."`
+- `topic-chat-view.tsx`: `import { SubQuestionList } from "@/features/..."`
+- `topic-graph-view.tsx`: `import { QuestionCard } from "@/features/..."`
+이를 통해 아키텍처 규칙(Rule #2)을 준수하고 유지보수성을 높였습니다.
+
+---
+
+## 15. File Relocation (StartNewTopicForm 이동)
+
+### ❓ 문제점
+`StartNewTopicForm`은 새로운 질문(Topic)을 시작하는 Input 폼이지만, `features/topic/components/start-new-topic-form/`이라는 별도의 최상위 폴더에 위치해 있어 `components/conversation/input/`과 역할이 겹치고 분산되어 있었습니다.
+
+### 💡 해결 방안
+`start-new-topic-form/index.tsx`를 **`features/topic/components/conversation/input/start-new-topic-form.tsx`**로 이동했습니다.
+- **Input 관련 컴포넌트 응집**: `chat-input.tsx`, `new-question-form.tsx`와 함께 `input` 디렉토리에서 관리되어 일관성이 높아졌습니다.
+- **파일명 변경**: `index.tsx` 대신 명시적인 파일명(`start-new-topic-form.tsx`)을 사용하여 찾기 쉬워졌습니다.

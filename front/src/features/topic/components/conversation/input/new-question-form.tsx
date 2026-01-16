@@ -1,4 +1,4 @@
-import { useQuestionTreeContext } from "@/features/topic/hooks/conversation/breadcrumb/use-question-tree-context";
+import { useQuestionTreeContext } from "@/features/topic/contexts/conversation/breadcrumb/question-tree-context";
 import { ChatInput } from "./chat-input";
 
 export const NewQuestionForm = () => {

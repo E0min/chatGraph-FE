@@ -2,9 +2,9 @@
 
 import { InteractiveD3Graph } from "@/features/topic/components/visualizer";
 import { FocusViewHeader } from "@/features/topic/components/conversation/breadcrumb/focus-view-header";
-import { QuestionCard } from "../content/question-card";
-import QuestionDetailModal from "../modals/question-detail-modal";
-import { useQuestionTreeContext } from "@/features/topic/hooks/conversation/breadcrumb/use-question-tree-context";
+import { QuestionCard } from "@/features/topic/components/conversation/content/question-card";
+import QuestionDetailModal from "@/features/topic/components/conversation/modals/question-detail-modal";
+import { useQuestionTreeContext } from "@/features/topic/contexts/conversation/breadcrumb/question-tree-context";
 
 export function TopicGraphView() {
     const {

@@ -12,7 +12,7 @@ import {
 } from "@/shared/ui/alert-dialog";
 import { TopicSelectorModal } from "./topic-selector-modal";
 import { ShareEmailModal } from "@/features/share/components/share-email-modal";
-import { useQuestionTreeContext } from "@/features/topic/hooks/conversation/breadcrumb/use-question-tree-context";
+import { useQuestionTreeContext } from "@/features/topic/contexts/conversation/breadcrumb/question-tree-context";
 
 export function TopicGlobalDialogs() {
     const {

@@ -5,11 +5,11 @@ import { Separator } from "@/shared/ui/separator";
 import { ScrollArea } from "@/shared/ui/scroll-area";
 import { MessageBubble } from "@/shared/ui/message-bubble";
 import { FocusViewHeader } from "@/features/topic/components/conversation/breadcrumb/focus-view-header";
-import { SubQuestionList } from "./sub-question-list";
-import { NewQuestionForm } from "../input/new-question-form";
+import { SubQuestionList } from "@/features/topic/components/conversation/content/sub-question-list";
+import { NewQuestionForm } from "@/features/topic/components/conversation/input/new-question-form";
 import { findPathToNode, cn } from "@/shared/lib/utils";
 import { useSidebar } from "@/shared/ui/sidebar";
-import { useQuestionTreeContext } from "@/features/topic/hooks/conversation/breadcrumb/use-question-tree-context";
+import { useQuestionTreeContext } from "@/features/topic/contexts/conversation/breadcrumb/question-tree-context";
 
 export function TopicChatView() {
     const { state, isMobile } = useSidebar();

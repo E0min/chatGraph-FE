@@ -3,7 +3,7 @@
 import { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import { ViewData } from "@/shared/lib/data-transformer";
-import { useQuestionTreeContext } from "@/features/topic/hooks/conversation/breadcrumb/use-question-tree-context";
+import { useQuestionTreeContext } from "@/features/topic/contexts/conversation/breadcrumb/question-tree-context";
 import { cn } from "@/shared/lib/utils";
 
 interface InteractiveD3GraphProps {
