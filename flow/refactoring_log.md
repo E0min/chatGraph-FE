@@ -70,6 +70,8 @@ Next.js 환경에서 데이터를 가져올 때 `useEffect`와 `fetch` 조합을
 리팩토링 과정에서 `TopicChatView.tsx` 내에 불필요한 영문 주석(CoT 흔적)이 남았고, `useQuestionTreeContext` 훅을 콜백 함수 내부에서 호출하여 **React Hook 규칙 위반(Lint Error)**이 발생했습니다.
 
 ### 💡 해결 방안
+- **Why**: 파일 이동 시 경로 수정 비용을 최소화하고, 파일의 위치를 명확하게 파악하기 위함입니다.
+- **[추가] `QuestionTreeContext.tsx` 삭제**: `QuestionTreeProvider`를 사용하지 않게 됨에 따라 Context 정의를 hook 파일(`use-question-tree-context.ts`)로 이관하고 해당 파일은 삭제했습니다.
 - **주석 정리**: 불필요한 영문 사고 과정 주석을 모두 제거하고, 한글로 간결하게 핵심만 남겼습니다.
 - **Hook 규칙 준수**: `navigateToQuestion` 함수를 컴포넌트 최상단에서 구조 분해 할당(Destructuring)으로 미리 꺼내와서 사용함으로써 렌더링 에러를 해결했습니다.
 
@@ -98,7 +100,8 @@ Next.js 환경에서 데이터를 가져올 때 `useEffect`와 `fetch` 조합을
 ### 💡 해결 방안
 **1:1 매핑 원칙**을 엄격하게 적용하여 파일을 분리했습니다.
 - **`breadcrumb-focus-view-content.tsx` 생성**: 내부 로직 컴포넌트를 별도 파일로 추출.
-- **`index.tsx`**: Provider를 설정하고 Content를 호출하는 진입점 역할만 수행.
+- **`breadcrumb-focus-view.tsx`**: (User Request) `QuestionTreeProvider`와 `BreadcrumbFocusViewContent`를 완전히 하나로 합쳐 단일 컴포넌트(`BreadcrumbFocusView`)로 만들었습니다.
+- 이를 통해 불필요한 depth를 줄이고 코드를 더 직관적으로 만들었습니다.
 - 이를 통해 파일 탐색기만 봐도 어떤 컴포넌트가 있는지 명확히 알 수 있게 되었습니다.
 
 ---
