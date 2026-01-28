@@ -17,11 +17,11 @@ export function StartNewTopicForm() {
     prompt,
     setPrompt,
     isLogin,
-    hasMounted,
     textareaRef,
     handleStartNewTopic,
   } = useStartNewTopic();
 
+  console.log("start-new-topic-form")
   // [Glassmorphism Container Style - FocusViewHeader/NewQuestionForm과 통일]
   const glassContainerClass = cn(
     "relative w-full flex items-end gap-2 p-2", // 내부 패딩과 정렬
@@ -78,7 +78,7 @@ export function StartNewTopicForm() {
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && !e.shiftKey) {
                     e.preventDefault();
-                    if (prompt.trim() && hasMounted && isLogin) {
+                    if (prompt.trim() && isLogin) {
                       handleStartNewTopic();
                     }
                   }
@@ -96,7 +96,7 @@ export function StartNewTopicForm() {
 
             {/* 전송 버튼 영역 */}
             <div className="flex-shrink-0 mb-1 mr-1">
-              {hasMounted && isLogin ? (
+              {isLogin ? (
                 <Button
                   onClick={handleStartNewTopic}
                   disabled={!prompt.trim()}
@@ -110,7 +110,7 @@ export function StartNewTopicForm() {
                 >
                   <ArrowUp className="h-6 w-6" />
                 </Button>
-              ) : hasMounted && !isLogin ? (
+              ) : (
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <div className="cursor-not-allowed">
@@ -127,15 +127,6 @@ export function StartNewTopicForm() {
                     <p>로그인이 필요합니다</p>
                   </TooltipContent>
                 </Tooltip>
-              ) : (
-                // 로딩/초기 상태
-                <Button
-                  disabled
-                  size="icon"
-                  className="rounded-full h-12 w-12 bg-gray-200/50 text-gray-400 dark:bg-white/10"
-                >
-                  <ArrowUp className="h-6 w-6" />
-                </Button>
               )}
             </div>
           </div>

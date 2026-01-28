@@ -5,13 +5,11 @@ import { useRouter } from "next/navigation";
 export function useStartNewTopic() {
     const [prompt, setPrompt] = useState("");
     const [isLogin, setIsLogin] = useState(false);
-    const [hasMounted, setHasMounted] = useState(false);
 
     const textareaRef = useRef<HTMLTextAreaElement>(null);
     const router = useRouter();
 
     useEffect(() => {
-        setHasMounted(true);
         const token = localStorage.getItem("token");
         if (token) {
             setIsLogin(true);
@@ -40,7 +38,6 @@ export function useStartNewTopic() {
         prompt,
         setPrompt,
         isLogin,
-        hasMounted,
         textareaRef,
         handleStartNewTopic,
     };
