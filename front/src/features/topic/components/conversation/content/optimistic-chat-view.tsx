@@ -3,9 +3,7 @@
 import { useOptimisticTopicData } from "@/features/topic/hooks/conversation/use-topic-data";
 import { useQuestionTree } from "@/features/topic/hooks/conversation/breadcrumb/use-question-tree";
 import { QuestionTreeContext } from "@/features/topic/contexts/conversation/breadcrumb/question-tree-context";
-import { TopicChatView } from "@/features/topic/components/conversation/content/topic-chat-view";
-import { TopicGraphView } from "@/features/topic/components/conversation/content/topic-graph-view";
-import { TopicGlobalDialogs } from "@/features/topic/components/conversation/modals/topic-global-dialogs";
+import { TopicContentLayout } from "@/features/topic/components/conversation/content/topic-content-layout";
 import LoadingSpinner from "@/shared/ui/loading-spinner";
 
 interface OptimisticChatViewProps {
@@ -26,12 +24,10 @@ export function OptimisticChatView({ topicId }: OptimisticChatViewProps) {
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const questionTree = useQuestionTree(apiResponse, topicId, null);
-    const { viewMode } = questionTree;
 
     return (
         <QuestionTreeContext.Provider value={questionTree}>
-            {viewMode === "graph" ? <TopicGraphView /> : <TopicChatView />}
-            <TopicGlobalDialogs />
+            <TopicContentLayout />
         </QuestionTreeContext.Provider>
     );
 }

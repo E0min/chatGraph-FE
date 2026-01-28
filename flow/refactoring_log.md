@@ -214,3 +214,16 @@ Breadcrumb 기능과 관련된 컴포넌트와 훅들이 `conversation` 폴더 �
 `start-new-topic-form/index.tsx`를 **`features/topic/components/conversation/input/start-new-topic-form.tsx`**로 이동했습니다.
 - **Input 관련 컴포넌트 응집**: `chat-input.tsx`, `new-question-form.tsx`와 함께 `input` 디렉토리에서 관리되어 일관성이 높아졌습니다.
 - **파일명 변경**: `index.tsx` 대신 명시적인 파일명(`start-new-topic-form.tsx`)을 사용하여 찾기 쉬워졌습니다.
+
+---
+
+## 16. DRY Principle (View Duplication 제거)
+
+### ❓ 문제점
+`StandardChatView`와 `OptimisticChatView`가 화면을 그리는 로직(Chart/Graph 스위칭, 다이얼로그 렌더링)을 똑같이 중복해서 가지고 있었습니다.
+
+### 💡 해결 방안
+공통적인 View Composition 로직을 **`TopicContentLayout`**이라는 별도 컴포넌트로 추출했습니다.
+- **`TopicContentLayout.tsx`**: `useQuestionTreeContext`를 통해 `viewMode`를 확인하고 적절한 View와 Dialogs를 렌더링.
+- **`StandardChatView` / `OptimisticChatView`**: 데이터 페칭 및 Context Provider 역할에만 집중하고, 내부 렌더링은 Layout에 위임.
+- 결과적으로 코드 중복이 제거되고(DRY), 각 컴포넌트의 책임이 더욱 명확해졌습니다.
