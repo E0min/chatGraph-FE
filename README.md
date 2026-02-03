@@ -8,7 +8,7 @@ ChatGraph의 프론트엔드 레포지토리입니다. 대화형 데이터를 �
 - **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
-- **State Management**: [Redux Toolkit](https://redux-toolkit.js.org/), [Zustand](https://github.com/pmndrs/zustand)
+- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
 - **Data Fetching**: [TanStack Query v5](https://tanstack.com/query/latest)
 
 ### UI Components & Visualization
