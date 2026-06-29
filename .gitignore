@@ -23,3 +23,8 @@ build/
 *.njsproj
 *.sln
 *.sw?
+
+# AI Agent Directories
+.agents/
+.claude/
+.gemini/

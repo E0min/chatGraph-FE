@@ -8,6 +8,9 @@
 3.  **Rule Stewardship**: You own the `rules/` directory structure.
     - **Constraint**: You cannot *unilaterally* change Core Rules (`meta/*`, `ops/*`).
     - **Action**: If a rule blocks progress, **propose** a change to the User first.
+4.  **Refactoring Log**: When performing structural changes, you MUST update `flow/refactoring_log.md` with:
+    - **Problem**: Why was this change needed?
+    - **Solution**: How did you solve it?
 
 ## 4. 🧬 Pattern Strategy (Design by Dialogue)
 When encountering existing code or needing a new structure:
